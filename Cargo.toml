@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "daemon",
+    "cli",
+    "runtime",
+    "images",
+    "shared"
+]
