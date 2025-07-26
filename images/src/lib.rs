@@ -10,6 +10,8 @@ use std::{
 };
 use tar::Archive;
 
+pub mod build;
+
 #[derive(Deserialize)]
 struct TokenResponse {
     token: String,
