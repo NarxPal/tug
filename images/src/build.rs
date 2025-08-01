@@ -1,3 +1,4 @@
+use crate::pull_and_extract_image;
 use std::fs;
 use std::path::PathBuf;
 use std::process::Command;
@@ -15,14 +16,18 @@ pub fn build_from_instructions(instructions: Vec<Instruction>) {
             Instruction::From(image) => {
                 println!("Pulling base image: {}", image);
 
-                let ctx_path = PathBuf::from("/tmp/tug-build/");
+                let ctx_path = PathBuf::from("/var/lib/tug/");
 
                 if ctx_path.exists() {
                     fs::remove_dir_all(&ctx_path).unwrap();
                 }
+
+                let build_id = uuid::Uuid::new_v4().to_string();
+                let ctx_path = PathBuf::from(format!("/var/lib/tug/{}", build_id));
+
                 fs::create_dir_all(&ctx_path).unwrap();
 
-                fs::write(ctx_path.join("base.txt"), format!("FROM: {}", image)).unwrap();
+                pull_and_extract_image(&image, &ctx_path);
 
                 context = Some(BuildContext {
                     rootfs: ctx_path.clone(),

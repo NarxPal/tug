@@ -11,3 +11,5 @@ serde_json = "1.0"
 uuid = { version = "1", features = ["v4"] }
 
 images = { path = "../images"} 
+tugfile = {path = "../tugfile"}
+cli = {path = "../cli"}

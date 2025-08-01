@@ -257,6 +257,8 @@ version = "0.1.0"
 dependencies = [
  "clap",
  "images",
+ "serde",
+ "serde_json",
  "tugfile",
 ]
 
@@ -296,10 +298,12 @@ name = "daemon"
 version = "0.1.0"
 dependencies = [
  "axum",
+ "cli",
  "images",
  "serde",
  "serde_json",
  "tokio",
+ "tugfile",
  "uuid",
 ]
 
@@ -767,6 +771,7 @@ dependencies = [
  "tar",
  "tokio",
  "tugfile",
+ "uuid",
 ]
 
 [[package]]
@@ -1233,9 +1238,9 @@ dependencies = [
 
 [[package]]
 name = "serde_json"
-version = "1.0.140"
+version = "1.0.141"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "20068b6e96dc6c9bd23e01df8827e6c7e1f2fddd43c21810382803c136b99373"
+checksum = "30b9eff21ebe718216c6ec64e1d9ac57087aad11efc64e32002bce4a0d4c03d3"
 dependencies = [
  "itoa",
  "memchr",
@@ -1518,6 +1523,9 @@ checksum = "e421abadd41a4225275504ea4d6566923418b7f05506fbc9c0fe86ba7396114b"
 [[package]]
 name = "tugfile"
 version = "0.1.0"
+dependencies = [
+ "serde",
+]
 
 [[package]]
 name = "unicode-ident"
